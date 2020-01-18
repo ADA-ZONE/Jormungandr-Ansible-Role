@@ -1,0 +1,6 @@
+---
+- name: restart jormungandr
+  systemd:
+    name: jormungandr
+    daemon_reload: yes
+    state: restarted

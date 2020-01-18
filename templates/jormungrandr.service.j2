@@ -1,0 +1,24 @@
+# The Jormnungandr Service (part of systemd)
+# file: /lib/systemd/system/jormungandr.service
+
+[Unit]
+Description     = Jormungandr Service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = cardano
+Group           = cardano
+WorkingDirectory= /home/cardano/
+Environment     = "JORMUNGANDR_STORAGE_DIR={{ jormungandr_storage_dir }}"
+Environment     = "REST_PORT={{ jormungandr_rest_port }}"
+Environment     = "GENESIS_BLOCK_HASH={{ genesis_block_hash }}"
+ExecStart       = /bin/jormungandr --config /home/{{ jormungandr_user }}/node-config.yaml --secret /home/{{ jormungandr_user }}/node_secret.yaml --genesis-block-hash $GENESIS_BLOCK_HASH
+LimitNOFILE     = 1048576
+StandardOutput  = syslog
+StandardError   = syslog
+SyslogIdentifier= jormungandr
+Restart         = on-failure
+
+[Install]
+WantedBy        = multi-user.target

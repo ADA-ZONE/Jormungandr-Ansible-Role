@@ -1,0 +1,31 @@
+---
+log:
+- output: stderr
+  format: json
+  level: info
+leadership:
+  log_ttl: 48h
+  garbage_collection_interval: 20s
+mempool:
+  fragment_ttl: 2h
+  log_ttl: 24h
+  garbage_collection_interval: 2h
+p2p:
+  max_connections: 4192
+  max_unreachable_nodes_to_connect_per_event: 128
+  public_address: "/ip4/{{ ipv4_address }}/tcp/{{ jormungandr_public_address_port }}"	
+  listen_address: "/ip4/0.0.0.0/tcp/{{ jormungandr_public_address_port }}"
+  gossip_interval: 1s
+  topics_of_interest:
+    blocks: high
+    messages: high
+  trusted_peers:
+{% for i in trusted_peers %}
+    - address: "{{ i.address }}"
+      id: {{ i.id }}
+{% endfor %}
+rest:
+  listen: 127.0.0.1:{{ jormungandr_rest_port }}
+explorer:
+  enabled: false
+storage: "{{ jormungandr_storage_dir }}"

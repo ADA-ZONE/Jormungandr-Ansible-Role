@@ -1,0 +1,44 @@
+---
+- name: Get public ip
+  uri:
+    url: http://ipv4.icanhazip.com
+    return_content: yes
+  register: ipv4_result
+
+- name: Extract public ipv4 address
+  set_fact:
+    ipv4_address: "{{ ipv4_result.content | trim }}"
+
+- name: Template node config
+  template:
+    src: templates/node-config.yaml.j2
+    dest: "/home/{{ jormungandr_user }}/node-config.yaml"
+    owner: "{{ jormungandr_user }}"
+    mode: "0644"
+  notify: restart jormungandr
+
+- name: Template node secret
+  template:
+    src: templates/node_secret.yaml.j2
+    dest: "/home/{{ jormungandr_user }}/node_secret.yaml"
+    owner: "{{ jormungandr_user }}"
+    mode: "0644"
+  notify: restart jormungandr
+
+- name: Check jormungandr binary versions
+  shell: /bin/jormungandr --version || true
+  register: jormungandr_version
+
+- name: Get binaries
+  unarchive:
+    src: "{{ binary_base_url }}/v{{ binary_version }}/jormungandr-v{{ binary_version }}-{{ ansible_facts['architecture'] }}-unknown-linux-gnu.tar.gz"
+    dest: /bin/
+    remote_src: yes
+  when: jormungandr_version.stdout is not match(binary_match)
+
+- name: Install Jormungandr systemd unit file
+  template:
+    src: templates/jormungrandr.service.j2
+    dest: /etc/systemd/system/jormungandr.service
+  notify: restart jormungandr
+
