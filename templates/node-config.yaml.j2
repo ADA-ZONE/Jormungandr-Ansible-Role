@@ -15,7 +15,7 @@ p2p:
   max_unreachable_nodes_to_connect_per_event: 128
   public_address: "/ip4/{{ ipv4_address }}/tcp/{{ jormungandr_public_address_port }}"	
   listen_address: "/ip4/0.0.0.0/tcp/{{ jormungandr_public_address_port }}"
-  gossip_interval: 1s
+  gossip_interval: 5s
   topics_of_interest:
     blocks: high
     messages: high
