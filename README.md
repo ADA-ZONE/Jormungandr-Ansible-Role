@@ -47,7 +47,7 @@ None.
       tasks:
         - name: Setup Jormungandr
           include_role:
-            name: jormungandr
+            name: Jormungandr-Ansible-Role
           vars:
             node_sig_key: kes25519-12...
             node_vrf_key: vrf_...
