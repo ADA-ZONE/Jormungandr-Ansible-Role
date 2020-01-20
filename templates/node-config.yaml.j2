@@ -2,7 +2,7 @@
 log:
 - output: stderr
   format: json
-  level: info
+  level: {{ jormungandr_log_level }}
 leadership:
   log_ttl: 48h
   garbage_collection_interval: 20s
