@@ -19,7 +19,7 @@ These values will have been created when creating the stake pool.
 The following variables are also availble with defaults:
 
     binary_base_url: https://github.com/input-output-hk/jormungandr/releases/download
-    binary_version: 0.8.6
+    binary_version: 0.8.7
     binary_match: "jormungandr {{ binary_version }}$"
     jormungandr_user: cardano
     jormungandr_storage_dir: "/home/{{ jormungandr_user }}/storage"
