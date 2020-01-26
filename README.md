@@ -26,6 +26,7 @@ The following variables are also availble with defaults:
     jormungandr_rest_port: 3001
     jormungandr_public_address_port: 3000
     Jormungandr_log_level: warn
+    jormungandr_max_unreachable_nodes_to_connect_per_event: 128
     genesis_block_hash: 8e4d2a343f3dcf9330ad9035b3e8d168e6728904262f2c434a4f8f934ec7b676 
 
 It is also possible to provide a list of trusted peers in the following format:

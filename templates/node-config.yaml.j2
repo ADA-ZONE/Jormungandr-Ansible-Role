@@ -12,7 +12,7 @@ mempool:
   garbage_collection_interval: 2h
 p2p:
   max_connections: 4192
-  max_unreachable_nodes_to_connect_per_event: 128
+  max_unreachable_nodes_to_connect_per_event: {{ jormungandr_max_unreachable_nodes_to_connect_per_event }}
   public_address: "/ip4/{{ ipv4_address }}/tcp/{{ jormungandr_public_address_port }}"	
   listen_address: "/ip4/0.0.0.0/tcp/{{ jormungandr_public_address_port }}"
   gossip_interval: 5s
