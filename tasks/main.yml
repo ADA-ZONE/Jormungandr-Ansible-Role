@@ -31,7 +31,7 @@
 
 - name: Get binaries
   unarchive:
-    src: "{{ binary_base_url }}/v{{ binary_version }}/jormungandr-v{{ binary_version }}-{{ ansible_facts['architecture'] }}-unknown-linux-gnu.tar.gz"
+    src: "{{ binary_base_url }}/v{{ binary_version }}/jormungandr-v{{ binary_version }}-{{ ansible_facts['architecture'] }}-unknown-linux-musl.tar.gz"
     dest: /bin/
     remote_src: yes
   when: jormungandr_version.stdout is not match(binary_match)
