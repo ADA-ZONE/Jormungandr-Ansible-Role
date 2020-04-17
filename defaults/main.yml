@@ -1,6 +1,6 @@
 ---
 binary_base_url: https://github.com/input-output-hk/jormungandr/releases/download
-binary_version: 0.8.8
+binary_version: 0.8.18
 binary_match: "jormungandr {{ binary_version }}$"
 
 jormungandr_user: cardano
@@ -8,7 +8,7 @@ jormungandr_storage_dir: "/home/{{ jormungandr_user }}/storage"
 jormungandr_rest_port: 3001
 jormungandr_public_address_port: 3000
 jormungandr_log_level: warn
-jormungandr_max_unreachable_nodes_to_connect_per_event: 128
+jormungandr_max_unreachable_nodes_to_connect_per_event: 5
 jormungandr_gossip_interval: 5s
 
 genesis_block_hash: 8e4d2a343f3dcf9330ad9035b3e8d168e6728904262f2c434a4f8f934ec7b676 
