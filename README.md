@@ -28,6 +28,7 @@ The following variables are also availble with defaults:
     Jormungandr_log_level: warn
     jormungandr_max_unreachable_nodes_to_connect_per_event: 128
     jormungandr_gossip_interval: 5s
+    jormungandr_public_id: 7ddf203c86a012e8863ef19d96aabba23d2445c492d86267 <- change this to your own made up hexi code to identify your node
     genesis_block_hash: 8e4d2a343f3dcf9330ad9035b3e8d168e6728904262f2c434a4f8f934ec7b676 
 
 It is also possible to provide a list of trusted peers in the following format:

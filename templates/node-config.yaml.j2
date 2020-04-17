@@ -13,7 +13,7 @@ p2p:
   topology_force_reset_interval: 30m
   allow_private_addresses: false
   max_bootstrap_attempts: 3
-  public_id: e7fcf4af676bf211cd58281145ede11776b9096ba00e8c8c
+  public_id: {{ jormungandr_public_id }}
   max_unreachable_nodes_to_connect_per_event: {{ jormungandr_max_unreachable_nodes_to_connect_per_event }}
   public_address: "/ip4/{{ ipv4_address }}/tcp/{{ jormungandr_public_address_port }}"	
   listen_address: "/ip4/0.0.0.0/tcp/{{ jormungandr_public_address_port }}"
